@@ -2,15 +2,18 @@
 
 import { cn } from "@/lib/utils";
 import { ButtonHTMLAttributes, forwardRef } from "react";
-import { motion } from "framer-motion";
+import { HTMLMotionProps, motion } from "framer-motion";
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+type CombinedProps = HTMLMotionProps<"button">;
+
+interface ButtonProps extends Omit<CombinedProps, "children"> {
     variant?: "primary" | "secondary" | "outline";
     size?: "sm" | "md" | "lg";
+    children?: React.ReactNode;
 }
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-    ({ className, variant = "primary", size = "md", ...props }, ref) => {
+    ({ className, variant = "primary", size = "md", children, ...props }, ref) => {
         const variants = {
             primary: "bg-primary text-black hover:bg-primary/90",
             secondary: "bg-white text-black hover:bg-white/90",
@@ -35,7 +38,9 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
                     className
                 )}
                 {...props}
-            />
+            >
+                {children}
+            </motion.button>
         );
     }
 );
