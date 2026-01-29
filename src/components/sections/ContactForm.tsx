@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 
@@ -16,8 +17,8 @@ export function ContactForm() {
                         <h2 className="text-5xl md:text-7xl font-serif text-white mb-8 leading-tight">
                             You&apos;re busy. Let&apos;s scale your <br /> content output.
                         </h2>
-                        <p className="text-white/20 text-[10px] uppercase tracking-[0.5em] mb-12">
-                            Book a strategy or advice call with a phone call today
+                        <p className="text-white/40 text-[10px] uppercase tracking-[0.4em] mb-12">
+                            Book a chat or start with a free audit
                         </p>
                     </motion.div>
 
@@ -26,39 +27,39 @@ export function ContactForm() {
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
                     >
-                        <form className="space-y-8">
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <form className="space-y-10">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
                                 <div className="space-y-3">
                                     <label className="text-[9px] uppercase tracking-[0.3em] text-white/30 ml-1">Full Name</label>
-                                    <input type="text" className="w-full bg-transparent border-b border-white/10 py-3 text-white focus:border-primary outline-none transition-colors placeholder:text-white/10" placeholder="Jane Doe" />
+                                    <input type="text" className="w-full bg-transparent border-b border-white/10 py-3 text-white focus:border-primary outline-none transition-colors" />
                                 </div>
                                 <div className="space-y-3">
                                     <label className="text-[9px] uppercase tracking-[0.3em] text-white/30 ml-1">Company Name</label>
-                                    <input type="text" className="w-full bg-transparent border-b border-white/10 py-3 text-white focus:border-primary outline-none transition-colors placeholder:text-white/10" placeholder="Acme Inc." />
-                                </div>
-                            </div>
-
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                <div className="space-y-3">
-                                    <label className="text-[9px] uppercase tracking-[0.3em] text-white/30 ml-1">Email</label>
-                                    <input type="email" className="w-full bg-transparent border-b border-white/10 py-3 text-white focus:border-primary outline-none transition-colors placeholder:text-white/10" placeholder="jane@example.com" />
+                                    <input type="text" className="w-full bg-transparent border-b border-white/10 py-3 text-white focus:border-primary outline-none transition-colors" />
                                 </div>
                                 <div className="space-y-3">
                                     <label className="text-[9px] uppercase tracking-[0.3em] text-white/30 ml-1">Website</label>
-                                    <input type="text" className="w-full bg-transparent border-b border-white/10 py-3 text-white focus:border-primary outline-none transition-colors placeholder:text-white/10" placeholder="example.com" />
+                                    <input type="text" className="w-full bg-transparent border-b border-white/10 py-3 text-white focus:border-primary outline-none transition-colors" />
+                                </div>
+                                <div className="space-y-3">
+                                    <label className="text-[9px] uppercase tracking-[0.3em] text-white/30 ml-1">Email</label>
+                                    <input type="email" className="w-full bg-transparent border-b border-white/10 py-3 text-white focus:border-primary outline-none transition-colors" />
+                                </div>
+                                <div className="space-y-3">
+                                    <label className="text-[9px] uppercase tracking-[0.3em] text-white/30 ml-1">Phone Number</label>
+                                    <input type="tel" className="w-full bg-transparent border-b border-white/10 py-3 text-white focus:border-primary outline-none transition-colors" />
+                                </div>
+                                <div className="space-y-3">
+                                    <label className="text-[9px] uppercase tracking-[0.3em] text-white/30 ml-1">Primary Goal of Reachout</label>
+                                    <select className="w-full bg-transparent border-b border-white/10 py-3 text-white focus:border-primary outline-none transition-colors appearance-none cursor-pointer">
+                                        <option className="bg-black text-white">Content Strategy</option>
+                                        <option className="bg-black text-white">Copywriting</option>
+                                        <option className="bg-black text-white">General Inquiry</option>
+                                    </select>
                                 </div>
                             </div>
 
-                            <div className="space-y-3">
-                                <label className="text-[9px] uppercase tracking-[0.3em] text-white/30 ml-1">How can we help?</label>
-                                <select className="w-full bg-transparent border-b border-white/10 py-3 text-white focus:border-primary outline-none transition-colors appearance-none cursor-pointer">
-                                    <option className="bg-black text-white">Content Strategy</option>
-                                    <option className="bg-black text-white">Copywriting</option>
-                                    <option className="bg-black text-white">General Inquiry</option>
-                                </select>
-                            </div>
-
-                            <Button variant="primary" className="w-full sm:w-[220px] py-6 uppercase tracking-[0.4em] font-bold text-[10px] mt-8 bg-primary hover:bg-primary/90 text-black rounded-none">
+                            <Button variant="primary" className="py-6 px-16 uppercase tracking-[0.4em] font-bold text-[10px] mt-8 bg-primary hover:bg-primary/90 text-black rounded-none">
                                 SEND
                             </Button>
                         </form>

@@ -4,10 +4,10 @@ import { motion } from "framer-motion";
 import { PenTool, Target, Zap, Waves } from "lucide-react";
 
 const approachItems = [
-    { id: 1, title: "Scale", icon: Zap, pos: "top" },
-    { id: 2, title: "Brand Voice", icon: PenTool, pos: "right" },
-    { id: 3, title: "Impact", icon: Target, pos: "bottom" },
-    { id: 4, title: "Resonance", icon: Waves, pos: "left" },
+    { id: 1, title: "AUDIT THE VOID", icon: Zap, pos: "top" },
+    { id: 2, title: "PLAN AND WRITE", icon: PenTool, pos: "right" },
+    { id: 3, title: "A/B TEST", icon: Target, pos: "bottom" },
+    { id: 4, title: "PLAN AND PUBLISH", icon: Waves, pos: "left" },
 ];
 
 export function Approach() {
@@ -22,7 +22,7 @@ export function Approach() {
                 >
                     Our Approach
                 </motion.h2>
-                <p className="text-white/40 max-w-2xl mx-auto text-lg uppercase tracking-widest text-[10px] leading-relaxed">
+                <p className="text-white/40 max-w-3xl mx-auto text-[10px] uppercase tracking-[0.4em] leading-relaxed">
                     An unmatched powerhouse, with refined elegance at every turn. You can call it Soul Script, and it&apos;s the premium content output you&apos;ve ever dreamt of.
                 </p>
             </div>
@@ -54,12 +54,12 @@ export function Approach() {
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
                             transition={{ delay: idx * 0.1, duration: 0.5 }}
-                            className={`absolute ${positions[item.pos as keyof typeof positions]} flex flex-col items-center gap-4`}
+                            className={`absolute ${positions[item.pos as keyof typeof positions]} flex flex-col items-center gap-6`}
                         >
-                            <div className="w-12 h-12 bg-zinc-900 border border-white/10 flex items-center justify-center rounded-full text-primary">
-                                <item.icon size={20} />
+                            <div className="w-14 h-14 bg-zinc-900 border border-white/5 flex items-center justify-center rounded-full text-primary/40">
+                                <item.icon size={24} strokeWidth={1} />
                             </div>
-                            <span className="text-white font-serif italic text-sm">{item.title}</span>
+                            <span className="text-white/40 text-[9px] font-bold uppercase tracking-[0.3em] whitespace-nowrap">{item.title}</span>
                         </motion.div>
                     );
                 })}

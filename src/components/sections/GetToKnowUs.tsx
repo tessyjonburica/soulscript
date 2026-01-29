@@ -29,10 +29,10 @@ export function GetToKnowUs() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.8, delay: 0.2 }}
                 >
-                    <h2 className="text-4xl md:text-5xl font-serif text-white mb-8">
+                    <h2 className="text-4xl md:text-5xl font-serif text-white mb-10">
                         Get To Know Us
                     </h2>
-                    <div className="space-y-6 text-white/60 text-lg leading-relaxed">
+                    <div className="space-y-8 text-white/60 text-lg leading-relaxed max-w-xl">
                         <p>
                             Under a goal-oriented collective of writers, strategists, and storytellers who believe that brand voice is the soul of a business. We don&apos;t just write copy; we build narratives that resonate with your audience and drive action.
                         </p>
@@ -40,7 +40,7 @@ export function GetToKnowUs() {
                             Our mission is to help brands tell their story in a way that is authentic, impactful, and results-driven. Whether you&apos;re a startup or an established brand, we&apos;re here to help you scale your soul.
                         </p>
                     </div>
-                    <div className="mt-12 w-24 h-[1px] bg-primary" />
+                    <div className="mt-16 w-32 h-[1px] bg-primary/40" />
                 </motion.div>
             </div>
         </section>

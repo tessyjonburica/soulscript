@@ -5,14 +5,14 @@ import { Quote } from "lucide-react";
 
 const testimonials = [
     {
-        quote: "Soul Script transformed our brand&apos;s voice. Our conversion rate increased by 20% within three months of the new copy going live.",
-        author: "2Rhyme",
-        role: "CEO, Startup X",
+        quote: "Soul Script established our brand's voice. Our conversion rate increased by 20% within three months of the new copy going live.",
+        author: "ALICIA REED",
+        role: "CEO, DROPPY",
     },
     {
-        quote: "The quality of the mirror content they delivered was unparalleled. It was as if they read our minds and truly &apos;got&apos; our vision.",
-        author: "John Smith",
-        role: "Marketing Director, Brand Y",
+        quote: "The quality of the mirror content they delivered was unparalleled. It was as if they read our minds and truly 'got' our vision.",
+        author: "MARCUS CHEN",
+        role: "FOUNDER, OLYMPIA",
     },
 ];
 

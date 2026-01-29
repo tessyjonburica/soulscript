@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { ButtonHTMLAttributes, forwardRef } from "react";
+import { forwardRef } from "react";
 import { HTMLMotionProps, motion } from "framer-motion";
 
 type CombinedProps = HTMLMotionProps<"button">;

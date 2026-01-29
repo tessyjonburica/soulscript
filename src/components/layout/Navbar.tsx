@@ -9,10 +9,10 @@ import { cn } from "@/lib/utils";
 
 const navLinks = [
     { name: "Home", href: "/" },
-    { name: "How It Works", href: "#how-it-works" },
-    { name: "Case Studies & Benefits", href: "#case-studies" },
-    { name: "Pricing", href: "#pricing" },
     { name: "About Us", href: "#about" },
+    { name: "Core Services & Process", href: "#services" },
+    { name: "Work", href: "#work" },
+    { name: "Contact", href: "#contact" },
 ];
 
 export function Navbar() {
@@ -56,10 +56,9 @@ export function Navbar() {
                     ))}
                 </div>
 
-                {/* CTA Button */}
                 <div className="hidden md:block">
                     <Button variant="outline" size="sm" className="rounded-none border-white/10 text-white hover:border-primary text-[9px] tracking-[0.3em] uppercase px-6 font-bold">
-                        BOOK A STRATEGY CALL
+                        BOOK A DISCOVERY CALL
                     </Button>
                 </div>
 
@@ -93,7 +92,7 @@ export function Navbar() {
                                 </Link>
                             ))}
                             <Button variant="primary" className="w-full uppercase text-[10px] tracking-widest">
-                                Book a Strategy Call
+                                Book a Discovery Call
                             </Button>
                         </div>
                     </motion.div>
