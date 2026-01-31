@@ -1,74 +1,112 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { PenTool, Target, Zap, Waves } from "lucide-react";
+import { Wand2 } from "lucide-react";
 
 const approachItems = [
-    { id: 1, title: "AUDIT THE VOID", icon: Zap, pos: "top" },
-    { id: 2, title: "PLAN AND WRITE", icon: PenTool, pos: "right" },
-    { id: 3, title: "A/B TEST", icon: Target, pos: "bottom" },
-    { id: 4, title: "PLAN AND PUBLISH", icon: Waves, pos: "left" },
+    { id: 1, title: "STORYTELLING", pos: "top" },
+    { id: 2, title: "AUTHENTICITY", pos: "right" },
+    { id: 3, title: "STRATEGY", pos: "bottom" },
+    { id: 4, title: "CONVERSION", pos: "left" },
 ];
 
 export function Approach() {
     return (
-        <section className="py-24 px-6 bg-[#0A0A0A]">
-            <div className="max-w-7xl mx-auto text-center mb-20">
+        <section className="py-24 px-6 bg-[#050505] overflow-hidden">
+            <div className="max-w-4xl mx-auto text-center mb-32">
                 <motion.h2
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="text-4xl md:text-5xl font-serif text-white mb-8"
+                    className="text-4xl md:text-5xl font-serif text-white mb-10"
                 >
                     Our Approach
                 </motion.h2>
-                <p className="text-white/40 max-w-3xl mx-auto text-[10px] uppercase tracking-[0.4em] leading-relaxed">
-                    An unmatched powerhouse, with refined elegance at every turn. You can call it Soul Script, and it&apos;s the premium content output you&apos;ve ever dreamt of.
-                </p>
+                <motion.p
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.2 }}
+                    className="text-white/60 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto font-light"
+                >
+                    In a world full of AI-generated noise, we believe in the power of human connection. Trust is built through authenticity. We provide 100% human-written content that resonates on a deeper level than any algorithm ever could.
+                </motion.p>
             </div>
 
-            <div className="relative max-w-xl mx-auto aspect-square flex items-center justify-center">
-                {/* Animated Rings */}
-                <div className="absolute inset-0 border border-white/5 rounded-full" />
-                <div className="absolute inset-[15%] border border-white/5 rounded-full" />
-                <div className="absolute inset-[30%] border border-primary/20 rounded-full animate-pulse" />
+            <div className="relative max-w-2xl mx-auto aspect-square flex items-center justify-center">
+                {/* Concentric Rings */}
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 0.1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1 }}
+                    className="absolute inset-0 border border-white rounded-full"
+                />
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 0.2, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1, delay: 0.2 }}
+                    className="absolute inset-[15%] border border-white rounded-full"
+                />
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 0.1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1, delay: 0.4 }}
+                    className="absolute inset-[30%] border border-[#C1A06E] rounded-full"
+                />
 
                 {/* Center Icon */}
-                <div className="relative z-10 w-20 h-20 bg-primary flex items-center justify-center rounded-full rotate-45 transform">
-                    <PenTool className="-rotate-45 text-black" size={32} />
-                </div>
+                <motion.div
+                    initial={{ opacity: 0, scale: 0 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.6 }}
+                    className="relative z-10 w-24 h-24 bg-[#1a1a1a] border border-[#C1A06E]/30 flex items-center justify-center rounded-full"
+                >
+                    <Wand2 className="text-[#C1A06E]" size={32} />
+                </motion.div>
 
                 {/* Approach Items */}
                 {approachItems.map((item, idx) => {
                     const positions = {
-                        top: "top-0 left-1/2 -translate-x-1/2 -translate-y-1/2",
-                        right: "right-0 top-1/2 translate-x-1/2 -translate-y-1/2",
-                        bottom: "bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2",
-                        left: "left-0 top-1/2 -translate-x-1/2 -translate-y-1/2",
+                        top: "top-0 left-1/2 -translate-x-1/2 -translate-y-12",
+                        right: "right-0 top-1/2 translate-x-1/2 -translate-y-1/2 translate-x-12",
+                        bottom: "bottom-0 left-1/2 -translate-x-1/2 translate-y-12",
+                        left: "left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 -translate-x-12",
                     };
+
+                    // For mobile, maybe we just stack them or keep them small? 
+                    // The diagram is hard on small screens. Let's keep absolute but adjust radius or scale.
+                    // Or actually, the screenshot shows lines.
+                    // For now, simple positioning.
 
                     return (
                         <motion.div
                             key={item.id}
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
                             viewport={{ once: true }}
-                            transition={{ delay: idx * 0.1, duration: 0.5 }}
-                            className={`absolute ${positions[item.pos as keyof typeof positions]} flex flex-col items-center gap-6`}
+                            transition={{ delay: 0.8 + (idx * 0.1) }}
+                            className={`absolute ${positions[item.pos as keyof typeof positions]}`}
                         >
-                            <div className="w-14 h-14 bg-zinc-900 border border-white/5 flex items-center justify-center rounded-full text-primary/40">
-                                <item.icon size={24} strokeWidth={1} />
-                            </div>
-                            <span className="text-white/40 text-[9px] font-bold uppercase tracking-[0.3em] whitespace-nowrap">{item.title}</span>
+                            <span className="text-[#C1A06E] text-[10px] md:text-xs font-bold uppercase tracking-[0.3em] whitespace-nowrap">
+                                {item.title}
+                            </span>
+                            {/* Optional lines pointing to center could be added here if needed */}
                         </motion.div>
                     );
                 })}
 
-                {/* Connecting Lines (SVG) */}
-                <svg className="absolute inset-0 w-full h-full -z-0 pointer-events-none opacity-20">
-                    <line x1="50%" y1="0%" x2="50%" y2="100%" stroke="white" strokeWidth="0.5" strokeDasharray="4 4" />
-                    <line x1="0%" y1="50%" x2="100%" y2="50%" stroke="white" strokeWidth="0.5" strokeDasharray="4 4" />
-                </svg>
+                {/* Connecting Lines placeholders - thin lines from center or ring to text */}
+                <div className="absolute inset-0 pointer-events-none">
+                    <span className="absolute top-[12%] left-1/2 w-[1px] h-[20%] bg-[#C1A06E]/20 -translate-x-1/2" />
+                    <span className="absolute bottom-[12%] left-1/2 w-[1px] h-[20%] bg-[#C1A06E]/20 -translate-x-1/2" />
+                    <span className="absolute left-[12%] top-1/2 w-[20%] h-[1px] bg-[#C1A06E]/20 -translate-y-1/2" />
+                    <span className="absolute right-[12%] top-1/2 w-[20%] h-[1px] bg-[#C1A06E]/20 -translate-y-1/2" />
+                </div>
+
             </div>
         </section>
     );

@@ -3,16 +3,16 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ScrollText } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
-    { name: "Home", href: "/" },
-    { name: "About Us", href: "#about" },
-    { name: "Core Services & Process", href: "#services" },
-    { name: "Work", href: "#work" },
-    { name: "Contact", href: "#contact" },
+    { name: "HOME", href: "/" },
+    { name: "SERVICES", href: "#services" },
+    { name: "PUBLISHING SERVICES", href: "#publishing" },
+    { name: "BLOG", href: "#blog" },
+    { name: "ABOUT", href: "#about" },
 ];
 
 export function Navbar() {
@@ -31,16 +31,16 @@ export function Navbar() {
         <nav
             className={cn(
                 "fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 py-4",
-                scrolled ? "bg-black/80 backdrop-blur-md border-b border-white/10 py-3" : "bg-transparent"
+                scrolled ? "bg-[#050505]/80 backdrop-blur-md border-b border-white/5 py-4" : "bg-transparent py-6"
             )}
         >
             <div className="max-w-7xl mx-auto flex items-center justify-between">
                 {/* Logo */}
-                <Link href="/" className="flex items-center gap-2">
-                    <div className="w-8 h-8 bg-primary flex items-center justify-center rounded-sm">
-                        <span className="text-black font-bold text-xl">S</span>
+                <Link href="/" className="flex items-center gap-3">
+                    <div className="w-8 h-8 flex items-center justify-center">
+                        <ScrollText className="text-[#C1A06E]" size={32} strokeWidth={1.5} />
                     </div>
-                    <span className="text-white font-serif text-xl tracking-tight uppercase">Soul Script</span>
+                    <span className="text-white font-serif text-lg tracking-[0.1em] uppercase font-bold">Soul Script</span>
                 </Link>
 
                 {/* Desktop Links */}
