@@ -77,11 +77,6 @@ export function Approach() {
                         left: "left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 -translate-x-12",
                     };
 
-                    // For mobile, maybe we just stack them or keep them small? 
-                    // The diagram is hard on small screens. Let's keep absolute but adjust radius or scale.
-                    // Or actually, the screenshot shows lines.
-                    // For now, simple positioning.
-
                     return (
                         <motion.div
                             key={item.id}
