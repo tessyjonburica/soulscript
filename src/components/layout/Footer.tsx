@@ -29,9 +29,9 @@ export function Footer() {
                             <Image
                                 src="/Logo-white.png"
                                 alt="Soul Script"
-                                width={180}
-                                height={40}
-                                className="h-10 w-auto"
+                                width={320}
+                                height={72}
+                                className="h-18 w-auto"
                             />
                         </Link>
                         <p className="text-white/20 text-[10px] uppercase tracking-[0.3em] leading-relaxed font-bold">
