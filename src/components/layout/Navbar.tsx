@@ -12,7 +12,7 @@ const navLinks = [
     { name: "HOME", href: "/" },
     { name: "SERVICES", href: "/services" },
     { name: "PUBLISHING SERVICES", href: "/publishing-services" },
-    { name: "BLOG", href: "#blog" },
+    { name: "BLOG", href: "/blog" },
     { name: "ABOUT", href: "#about" },
 ];
 
@@ -32,7 +32,7 @@ export function Navbar() {
         <nav
             className={cn(
                 "fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 py-4",
-                scrolled ? "bg-[#050505]/80 backdrop-blur-md border-b border-white/5 py-4" : "bg-transparent py-6"
+                scrolled ? "bg-[#050505]/60 backdrop-blur-md border-b border-white/5 py-4" : "bg-transparent py-6"
             )}
         >
             <div className="max-w-7xl mx-auto flex items-center justify-between">
