@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
-import { Plus, BookOpen } from "lucide-react";
+import { Plus } from "lucide-react";
 
 const publishingServices = [
     {
@@ -101,7 +101,7 @@ export default function PublishingServicesPage() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.2 }}
-                        className="text-xl md:text-2xl font-serif italic text-white/60 mb-12"
+                        className="text-xl md:text-2xl font-serif italic text-white/60 mb-8"
                     >
                         From raw manuscript to industry-standard masterpiece.
                     </motion.h2>
@@ -149,7 +149,6 @@ export default function PublishingServicesPage() {
             <section className="py-48 px-6 border-t border-white/5 relative overflow-hidden bg-[#080808]">
                 {/* Background Book Icon */}
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.03] pointer-events-none">
-                    <BookOpen size={600} strokeWidth={0.5} />
                 </div>
 
                 <div className="max-w-5xl mx-auto text-center relative z-10">
