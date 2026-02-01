@@ -50,7 +50,7 @@ export function ContactForm() {
                                     <input type="tel" className="w-full bg-transparent border-b border-white/10 py-3 text-white focus:border-primary outline-none transition-colors" />
                                 </div>
                                 <div className="space-y-3">
-                                    <label className="text-[9px] uppercase tracking-[0.3em] text-white/30 ml-1">Phone Number</label>
+                                    <label className="text-[9px] uppercase tracking-[0.3em] text-white/30 ml-1">Primary Goal of Reachout</label>
                                     <input type="tel" className="w-full bg-transparent border-b border-white/10 py-3 text-white focus:border-primary outline-none transition-colors" />
                                 </div>
                             </div>
