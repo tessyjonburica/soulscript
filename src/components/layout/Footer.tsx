@@ -85,7 +85,7 @@ export function Footer() {
                 {/* Bottom Bar: Copyright & Legal */}
                 <div className="flex flex-col md:flex-row justify-between items-center pt-10 border-t border-white/5 gap-8">
                     <p className="text-white/20 text-[10px] uppercase tracking-[0.4em] font-bold">
-                        © SOUL SCRIPT 2024
+                        © SOUL SCRIPT 2026
                     </p>
                     <div className="flex gap-12">
                         <Link href="#" className="text-white/20 hover:text-white text-[9px] uppercase tracking-[0.3em] font-bold transition-colors">
