@@ -96,7 +96,7 @@ export function Navbar() {
                                     {link.name}
                                 </Link>
                             ))}
-                            <Button variant="default" className="w-full uppercase text-[10px] tracking-widest bg-primary text-black hover:bg-white transition-colors">
+                            <Button variant="primary" className="w-full uppercase text-[10px] tracking-widest bg-primary text-black hover:bg-white transition-colors">
                                 Book a Discovery Call
                             </Button>
                         </div>
