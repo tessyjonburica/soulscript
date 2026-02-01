@@ -12,8 +12,8 @@ export default function Home() {
       <Navbar />
       <Hero />
       <TrustedBy />
-      <Approach />
       <About />
+      <Approach />
       <ContactForm />
       <Footer />
     </main>
