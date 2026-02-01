@@ -101,7 +101,7 @@ export default function PublishingServicesPage() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.2 }}
-                        className="text-xl md:text-2xl font-serif italic text-white/60 mb-8"
+                        className="text-xl md:text-2xl font-serif italic text-[#C1A06E] mb-8"
                     >
                         From raw manuscript to industry-standard masterpiece.
                     </motion.h2>
@@ -110,7 +110,7 @@ export default function PublishingServicesPage() {
 
             {/* Services Grid */}
             <section className="py-24 px-6 border-t border-white/5 relative overflow-hidden">
-                <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-x-16 lg:gap-x-32 gap-y-32">
+                <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-x-16 lg:gap-x-24 gap-y-32">
                     {publishingServices.map((service, idx) => (
                         <motion.div
                             key={service.title}
@@ -172,7 +172,7 @@ export default function PublishingServicesPage() {
                         <Button
                             className="rounded-none bg-[#C1A06E] text-black hover:bg-white transition-all px-12 py-7 text-[10px] font-bold tracking-[0.3em] uppercase"
                         >
-                            Book a Discovery Call
+                            BOOK A DISCOVERY CALL
                         </Button>
                     </motion.div>
                 </div>

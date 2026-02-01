@@ -68,8 +68,8 @@ export function Services() {
                     transition={{ duration: 0.8, delay: 0.4 }}
                     className="text-center"
                 >
-                    <Button variant="outline" className="rounded-none border-[#C1A06E]/30 text-[#C1A06E] hover:bg-[#C1A06E] hover:text-black transition-all px-10 py-7 text-[10px] font-bold tracking-[0.2em] uppercase">
-                        BOOK A DISCOVERY CALL TODAY
+                    <Button variant="outline" className="rounded-none border-[#C1A06E]/30 text-[#C1A06E] hover:bg-[#C1A06E] hover:text-black transition-all px-10 py-7 text-[10px] font-bold tracking-[0.3em] uppercase">
+                        BOOK A DISCOVERY CALL
                     </Button>
                 </motion.div>
             </div>

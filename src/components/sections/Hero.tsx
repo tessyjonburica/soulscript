@@ -45,7 +45,7 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
           className="flex flex-col sm:flex-row gap-4 justify-center"
         >
-          <Button size="lg" className="rounded-none bg-[#C1A06E] text-black hover:bg-[#D4B98E] transition-colors uppercase tracking-[0.2em] text-[10px] font-bold px-12 py-7">
+          <Button size="lg" className="rounded-none bg-[#C1A06E] text-black hover:bg-[#D4B98E] transition-colors uppercase tracking-[0.3em] text-[10px] font-bold px-12 py-7">
             BOOK A DISCOVERY CALL
           </Button>
         </motion.div>

@@ -92,7 +92,7 @@ export default function ServicesPage() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
-                        className="text-5xl md:text-7xl font-serif mb-8"
+                        className="text-5xl md:text-7xl lg:text-8xl font-serif mb-8"
                     >
                         Our Services
                     </motion.h1>
@@ -117,7 +117,7 @@ export default function ServicesPage() {
 
             {/* Services Grid */}
             <section className="py-24 px-6 border-t border-white/5">
-                <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-x-24 gap-y-32">
+                <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-x-16 lg:gap-x-24 gap-y-32">
                     {services.map((service, idx) => (
                         <motion.div
                             key={service.title}
@@ -127,7 +127,7 @@ export default function ServicesPage() {
                             transition={{ duration: 0.8, delay: (idx % 2) * 0.2 }}
                             className="flex flex-col"
                         >
-                            <h3 className="text-2xl md:text-3xl font-serif mb-6 text-white group-hover:text-[#C1A06E] transition-colors">
+                            <h3 className="text-3xl md:text-4xl font-serif mb-6 text-white group-hover:text-[#C1A06E] transition-colors">
                                 {service.title}
                             </h3>
                             <p className="text-white/40 text-lg mb-10 leading-relaxed font-light">
