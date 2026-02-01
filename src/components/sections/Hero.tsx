@@ -23,17 +23,17 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          className="text-6xl md:text-8xl lg:text-9xl font-serif text-white mb-8 leading-[1.05] tracking-tight"
+          className="text-5xl md:text-7xl lg:text-8xl font-serif text-white mb-8 leading-[1.1] tracking-tight"
         >
           Scale your content output <br />
-          <span className="text-[#C1A06E] italic font-light">without losing your brand<br className="hidden md:block" /> voice.</span>
+          <span className="text-[#C1A06E] italic font-normal">without losing your brand voice.</span>
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-          className="text-white/60 text-lg md:text-xl max-w-2xl mx-auto mb-16 leading-relaxed tracking-wide font-light"
+          className="text-white/40 text-sm md:text-md max-w-xl mx-auto mb-16 leading-relaxed tracking-wide font-light"
         >
           We craft conversion-driven copy and content for startups and creative
           brands ready to grow.
@@ -45,7 +45,7 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
           className="flex flex-col sm:flex-row gap-4 justify-center"
         >
-          <Button variant="outline" size="lg" className="rounded-none border-[#C1A06E] text-[#C1A06E] hover:bg-[#C1A06E] hover:text-black uppercase tracking-[0.2em] text-[11px] font-bold px-12 py-6">
+          <Button size="lg" className="rounded-none bg-[#C1A06E] text-black hover:bg-[#D4B98E] transition-colors uppercase tracking-[0.2em] text-[10px] font-bold px-12 py-7">
             BOOK A DISCOVERY CALL
           </Button>
         </motion.div>

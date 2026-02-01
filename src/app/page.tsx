@@ -4,6 +4,8 @@ import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
 import { TrustedBy } from "@/components/sections/TrustedBy";
 import { Approach } from "@/components/sections/Approach";
+import { Services } from "@/components/sections/Services";
+import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
 import { ContactForm } from "@/components/sections/ContactForm";
 
 export default function Home() {
@@ -14,6 +16,8 @@ export default function Home() {
       <TrustedBy />
       <About />
       <Approach />
+      <Services />
+      <WhyChooseUs />
       <ContactForm />
       <Footer />
     </main>

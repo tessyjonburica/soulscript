@@ -31,7 +31,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body
-        className={`${playfair.variable} ${inter.variable} font-sans antialiased bg-[#050505] text-white`}
+        className={`${playfair.variable} ${inter.variable} ${almendra.variable} font-sans antialiased bg-[#050505] text-white`}
       >
         {children}
       </body>
