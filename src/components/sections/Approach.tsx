@@ -33,7 +33,10 @@ export function Approach() {
                 </motion.p>
             </div>
 
-            <div className="relative max-w-2xl mx-auto aspect-square flex items-center justify-center">
+
+
+            {/* Desktop Diagram - Hidden on mobile */}
+            <div className="hidden md:block relative max-w-2xl mx-auto aspect-square flex-shrink-0">
                 {/* Concentric Rings */}
                 <motion.div
                     initial={{ opacity: 0, scale: 0.8 }}
@@ -63,7 +66,7 @@ export function Approach() {
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.6 }}
-                    className="relative z-10 w-24 h-24 bg-[#1a1a1a] border border-[#C1A06E]/30 flex items-center justify-center rounded-full"
+                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-24 h-24 bg-[#1a1a1a] border border-[#C1A06E]/30 flex items-center justify-center rounded-full"
                 >
                     <Wand2 className="text-[#C1A06E]" size={32} />
                 </motion.div>
@@ -72,9 +75,9 @@ export function Approach() {
                 {approachItems.map((item, idx) => {
                     const positions = {
                         top: "top-0 left-1/2 -translate-x-1/2 -translate-y-12",
-                        right: "right-0 top-1/2 translate-x-1/2 -translate-y-1/2 translate-x-12",
+                        right: "right-0 top-1/2 translate-x-12 -translate-y-1/2",
                         bottom: "bottom-0 left-1/2 -translate-x-1/2 translate-y-12",
-                        left: "left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 -translate-x-12",
+                        left: "left-0 top-1/2 -translate-x-12 -translate-y-1/2",
                     };
 
                     return (
@@ -89,20 +92,37 @@ export function Approach() {
                             <span className="text-[#C1A06E] text-[10px] md:text-xs font-bold uppercase tracking-[0.3em] whitespace-nowrap">
                                 {item.title}
                             </span>
-                            {/* Optional lines pointing to center could be added here if needed */}
                         </motion.div>
                     );
                 })}
 
-                {/* Connecting Lines placeholders - thin lines from center or ring to text */}
+                {/* Connecting Lines */}
                 <div className="absolute inset-0 pointer-events-none">
                     <span className="absolute top-[12%] left-1/2 w-[1px] h-[20%] bg-[#C1A06E]/20 -translate-x-1/2" />
                     <span className="absolute bottom-[12%] left-1/2 w-[1px] h-[20%] bg-[#C1A06E]/20 -translate-x-1/2" />
                     <span className="absolute left-[12%] top-1/2 w-[20%] h-[1px] bg-[#C1A06E]/20 -translate-y-1/2" />
                     <span className="absolute right-[12%] top-1/2 w-[20%] h-[1px] bg-[#C1A06E]/20 -translate-y-1/2" />
                 </div>
-
             </div>
+
+            {/* Mobile List - Shown only on mobile */}
+            <div className="md:hidden grid grid-cols-2 gap-8 max-w-md mx-auto">
+                {approachItems.map((item, idx) => (
+                    <motion.div
+                        key={item.id}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: idx * 0.1 }}
+                        className="text-center p-6 border border-[#C1A06E]/20 bg-[#1a1a1a]/30"
+                    >
+                        <span className="text-[#C1A06E] text-[10px] font-bold uppercase tracking-[0.3em]">
+                            {item.title}
+                        </span>
+                    </motion.div>
+                ))}
+            </div>
+
         </section>
     );
 }

@@ -14,8 +14,8 @@ export function ContactForm() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                     >
-                        <h2 className="text-5xl md:text-7xl font-serif text-white mb-8 leading-tight">
-                            You&apos;re busy. Let&apos;s scale your <br /> content output.
+                        <h2 className="text-4xl md:text-5xl lg:text-7xl font-serif text-white mb-8 leading-tight">
+                            You&apos;re busy. Let&apos;s scale your <br className="hidden md:block" />content output.
                         </h2>
                         <p className="text-white/40 text-[10px] uppercase tracking-[0.4em] mb-12">
                             Book a chat or start with a free audit

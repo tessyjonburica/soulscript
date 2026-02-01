@@ -25,7 +25,7 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           className="text-5xl md:text-7xl lg:text-8xl font-serif text-white mb-8 leading-[1.1] tracking-tight font-light"
         >
-          Scale your content output <br />
+          Scale your content output <br className="hidden sm:block" />
           <span className="text-[#C1A06E] font-serif italic font-normal">without losing your brand voice.</span>
         </motion.h1>
 
@@ -33,7 +33,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-          className="text-white/40 text-sm md:text-md max-w-xl mx-auto mb-16 leading-relaxed tracking-wide font-light"
+          className="text-white/40 text-base md:text-lg max-w-xl mx-auto mb-16 leading-relaxed tracking-wide font-light"
         >
           We craft conversion-driven copy and content for startups and creative
           brands ready to grow.
