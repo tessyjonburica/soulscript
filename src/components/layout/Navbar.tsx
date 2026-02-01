@@ -2,8 +2,9 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Menu, X, ScrollText } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 
@@ -36,11 +37,15 @@ export function Navbar() {
         >
             <div className="max-w-7xl mx-auto flex items-center justify-between">
                 {/* Logo */}
-                <Link href="/" className="flex items-center gap-3">
-                    <div className="w-8 h-8 flex items-center justify-center">
-                        <ScrollText className="text-[#C1A06E]" size={32} strokeWidth={1.5} />
-                    </div>
-                    <span className="text-white font-serif text-lg tracking-[0.1em] uppercase font-bold">Soul Script</span>
+                <Link href="/" className="flex items-center">
+                    <Image
+                        src="/Logo-white.png"
+                        alt="Soul Script"
+                        width={180}
+                        height={40}
+                        className="h-10 w-auto"
+                        priority
+                    />
                 </Link>
 
                 {/* Desktop Links */}
@@ -91,7 +96,7 @@ export function Navbar() {
                                     {link.name}
                                 </Link>
                             ))}
-                            <Button variant="primary" className="w-full uppercase text-[10px] tracking-widest">
+                            <Button variant="default" className="w-full uppercase text-[10px] tracking-widest bg-primary text-black hover:bg-white transition-colors">
                                 Book a Discovery Call
                             </Button>
                         </div>
