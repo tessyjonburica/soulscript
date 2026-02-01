@@ -3,7 +3,7 @@
 :root {
   --background: #050505;
   --foreground: #ffffff;
-  --primary: #C5A059;
+  --primary: #C1A06E;
   --primary-foreground: #050505;
   --accent: #0A0A0A;
 }
@@ -16,7 +16,7 @@
   --color-accent: var(--accent);
   
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-almendra), serif;
+  --font-serif: var(--font-cormorant), serif;
 }
 
 body {

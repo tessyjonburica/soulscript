@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Inter, Almendra } from "next/font/google";
+import { Playfair_Display, Inter, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -7,9 +7,10 @@ const playfair = Playfair_Display({
   subsets: ["latin"],
 });
 
-const almendra = Almendra({
-  weight: ["400", "700"],
-  variable: "--font-almendra",
+const cormorant = Cormorant_Garamond({
+  weight: ["300", "400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  variable: "--font-cormorant",
   subsets: ["latin"],
 });
 
@@ -31,7 +32,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body
-        className={`${playfair.variable} ${inter.variable} ${almendra.variable} font-sans antialiased bg-[#050505] text-white`}
+        className={`${playfair.variable} ${inter.variable} ${cormorant.variable} font-sans antialiased bg-[#050505] text-white`}
       >
         {children}
       </body>
