@@ -16,7 +16,7 @@ export function Hero() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="mb-8"
         >
-          <span className="text-[#C1A06E] uppercase tracking-[0.4em] text-[10px] font-bold">Soul Script</span>
+         
         </motion.div>
 
         <motion.h1
@@ -26,7 +26,7 @@ export function Hero() {
           className="text-5xl md:text-7xl lg:text-8xl font-serif text-white mb-8 leading-[1.1] tracking-tight"
         >
           Scale your content output <br />
-          <span className="text-[#C1A06E] italic font-normal">without losing your brand voice.</span>
+          <span className="text-[#C1A06E] font-normal">without losing your brand voice.</span>
         </motion.h1>
 
         <motion.p
