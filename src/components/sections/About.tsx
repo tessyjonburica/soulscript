@@ -9,11 +9,13 @@ export function About() {
             <div className="container mx-auto px-6">
                 <div className="grid md:grid-cols-2 gap-16 items-center">
                     {/* Image Placeholder - Left */}
-                    <div className="relative h-[600px] bg-white/5 w-full overflow-hidden grayscale opacity-80">
-                        {/* Placeholder for the office image */}
-                        <div className="absolute inset-0 bg-neutral-900 flex items-center justify-center">
-                            <span className="text-white/20 uppercase tracking-widest text-xs">Office Image</span>
-                        </div>
+                    <div className="relative aspect-[4/3] bg-white/5 w-full overflow-hidden grayscale opacity-80">
+                        <Image
+                            src="/office_space_soulscript.png"
+                            alt="Soul Script Office Space"
+                            fill
+                            className="object-cover"
+                        />
                     </div>
 
                     {/* Content - Right */}
