@@ -10,64 +10,79 @@ import Image from "next/image";
 
 const categories = ["ALL POSTS", "CONTENT STRATEGY", "CONVERSION COPYWRITING", "SEO WRITING", "BRAND VOICE"];
 
-const blogPosts = [
-    {
-        id: 1,
-        title: "The Architecture of High-Converting Sales Pages",
-        excerpt: "Deep-dive into what makes a sales page truly unstoppable: the psychology, structure, and microcopy decisions that separate amateurs from six-figure launches.",
-        category: "CONVERSION COPYWRITING",
-        date: "DEC 2024",
-        imagePath: "/office_space_soulscript.png",
-        featured: true
-    },
-    {
-        id: 2,
-        title: "Why AI Will Never Replace The Human Copywriter (But It Might Enhance It)",
-        excerpt: "A nuanced take on the role of AI in modern content creation and what truly matters in brand voice.",
-        category: "SEO",
-        date: "NOV 2024",
-        imagePath: "/office_space_soulscript.png"
-    },
-    {
-        id: 3,
-        title: "Five Subtle Approaches to Thought-Bought Verifications",
-        excerpt: "The delicate art of establishing authority without sounding pretentious or salesy.",
-        category: "CONTENT STRATEGY",
-        date: "NOV 2024",
-        imagePath: "/office_space_soulscript.png"
-    },
-    {
-        id: 4,
-        title: "Part-Gig Post-Boosts Should be Carefully Digital Wallets",
-        excerpt: "Understanding the evolving landscape of digital content monetization.",
-        category: "STRATEGY",
-        date: "OCT 2024",
-        imagePath: "/office_space_soulscript.png"
-    },
-    {
-        id: 5,
-        title: "Forcing Copy Art Wizards of Current Microcopy Delight Applications",
-        excerpt: "How micro-moments in copy can drastically shift user behavior.",
-        category: "BRAND VOICE",
+import { createClient } from "@/lib/supabase/client";
+import { useEffect } from "react";
+
+interface BlogPost {
+    id: string;
+    title: string;
+    excerpt: string;
+    category: string;
+    created_at: string;
+    cover_image: string;
+    slug: string;
+    published: boolean;
+}
+
+export default function BlogPage() {
+    const [activeCategory, setActiveCategory] = useState("ALL POSTS");
+    const [posts, setPosts] = useState<BlogPost[]>([]);
+    const [loading, setLoading] = useState(true);
+    const supabase = createClient();
+
+    useEffect(() => {
+        const fetchPosts = async () => {
+            const { data, error } = await supabase
+                .from("posts")
+                .select("*")
+                .eq("published", true)
+                .order("created_at", { ascending: false });
+
+            if (!error && data) {
+                // Map Supabase data to our UI format if needed, but for now direct mapping
+                // We'll treat missing categories as "General" or handle in UI
+                const formattedPosts = data.map(post => ({
+                    ...post,
+                    category: "Research", // Default or add category column to DB later
+                    date: new Date(post.created_at).toLocaleDateString('en-US', { month: 'short', year: 'numeric' }).toUpperCase(),
+                    imagePath: post.cover_image || "/office_space_soulscript.png"
+                }));
+
+                // For now, let's just use the fetched data directly where possible
+                // Types might need adjusting
+                setPosts(formattedPosts as any);
+            }
+            setLoading(false);
+        };
+        fetchPosts();
+    }, []);
+
+    const filteredPosts = activeCategory === "ALL POSTS"
+        ? posts
+        : posts.filter((post) => post.category === activeCategory);
+
+    // Featured post logic: just take the first one for now
+    const featuredPost = posts[0];
+    const gridPosts = posts.slice(1); category: "BRAND VOICE",
         date: "SEPT 2024",
-        imagePath: "/office_space_soulscript.png"
-    },
-    {
-        id: 6,
+            imagePath: "/office_space_soulscript.png"
+},
+{
+    id: 6,
         title: "Your Launch Automated Management Stack Without Freaking Out",
-        excerpt: "Streamlining your content workflow without losing the human touch.",
-        category: "SEO",
-        date: "SEPT 2024",
-        imagePath: "/office_space_soulscript.png"
-    },
-    {
-        id: 7,
+            excerpt: "Streamlining your content workflow without losing the human touch.",
+                category: "SEO",
+                    date: "SEPT 2024",
+                        imagePath: "/office_space_soulscript.png"
+},
+{
+    id: 7,
         title: "Art-Aging Genuine Messages with Current Microcopy Style Strategies",
-        excerpt: "Balancing timeless messaging with contemporary design trends.",
-        category: "BRAND VOICE",
-        date: "AUG 2024",
-        imagePath: "/office_space_soulscript.png"
-    }
+            excerpt: "Balancing timeless messaging with contemporary design trends.",
+                category: "BRAND VOICE",
+                    date: "AUG 2024",
+                        imagePath: "/office_space_soulscript.png"
+}
 ];
 
 export default function BlogPage() {

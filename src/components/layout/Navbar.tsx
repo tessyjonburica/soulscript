@@ -54,7 +54,7 @@ export function Navbar() {
                         <Link
                             key={link.name}
                             href={link.href}
-                            className="text-[9px] font-bold text-white/80 hover:text-white transition-colors uppercase tracking-[0.4em]"
+                            className="text-xs font-bold text-white hover:text-white/80 transition-colors uppercase tracking-[0.3em]"
                         >
                             {link.name}
                         </Link>
@@ -62,7 +62,7 @@ export function Navbar() {
                 </div>
 
                 <div className="hidden md:block">
-                    <Button variant="outline" size="sm" className="rounded-none border-white/10 text-white hover:border-primary text-[9px] tracking-[0.3em] uppercase px-6 font-bold">
+                    <Button variant="outline" size="sm" className="rounded-none border-white/10 text-white hover:border-primary text-xs tracking-[0.2em] uppercase px-6 font-bold">
                         BOOK A DISCOVERY CALL
                     </Button>
                 </div>
