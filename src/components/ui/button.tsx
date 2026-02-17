@@ -7,7 +7,7 @@ import { HTMLMotionProps, motion } from "framer-motion";
 type CombinedProps = HTMLMotionProps<"button">;
 
 interface ButtonProps extends Omit<CombinedProps, "children"> {
-    variant?: "primary" | "secondary" | "outline";
+    variant?: "primary" | "secondary" | "outline" | "ghost";
     size?: "sm" | "md" | "lg";
     children?: React.ReactNode;
 }
@@ -18,6 +18,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             primary: "bg-primary text-black hover:bg-primary/90",
             secondary: "bg-white text-black hover:bg-white/90",
             outline: "border border-primary text-primary hover:bg-primary/10",
+            ghost: "hover:bg-white/10 text-white",
         };
 
         const sizes = {
