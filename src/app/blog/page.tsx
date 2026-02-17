@@ -42,7 +42,8 @@ export default function BlogPage() {
             if (!error && data) {
                 const formattedPosts = data.map(post => ({
                     ...post,
-                    category: "Research", // Placeholder category
+                    // Use the actual category from DB, fallback to 'General'
+                    category: post.category || "General",
                     date: new Date(post.created_at).toLocaleDateString('en-US', { month: 'short', year: 'numeric' }).toUpperCase(),
                     imagePath: post.cover_image || "/office_space_soulscript.png"
                 }));

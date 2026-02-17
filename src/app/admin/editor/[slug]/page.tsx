@@ -19,6 +19,7 @@ export default function EditorPage() {
     const [slug, setSlug] = useState("");
     const [excerpt, setExcerpt] = useState("");
     const [coverImage, setCoverImage] = useState("");
+    const [category, setCategory] = useState("General");
     const [loading, setLoading] = useState(true);
     const [saving, setSaving] = useState(false);
     const [published, setPublished] = useState(false);
@@ -56,6 +57,7 @@ export default function EditorPage() {
                 setSlug(data.slug);
                 setExcerpt(data.excerpt || "");
                 setCoverImage(data.cover_image || "");
+                setCategory(data.category || "General");
                 setPublished(data.published);
                 editor?.commands.setContent(data.content);
             }
@@ -82,6 +84,7 @@ export default function EditorPage() {
             excerpt,
             content,
             cover_image: coverImage,
+            category,
             published,
             updated_at: new Date().toISOString(),
         };
@@ -174,6 +177,17 @@ export default function EditorPage() {
                             onChange={(e) => setSlug(e.target.value)}
                             className="flex-1 bg-white/5 border border-white/10 text-sm text-white px-4 py-2 focus:border-[#C1A06E] focus:outline-none placeholder-white/20"
                         />
+                        <select
+                            value={category}
+                            onChange={(e) => setCategory(e.target.value)}
+                            className="bg-white/5 border border-white/10 text-sm text-white px-4 py-2 focus:border-[#C1A06E] focus:outline-none placeholder-white/20 uppercase tracking-widest"
+                        >
+                            <option value="General">General</option>
+                            <option value="Content Strategy">Content Strategy</option>
+                            <option value="Conversion Copywriting">Conversion Copywriting</option>
+                            <option value="SEO Writing">SEO Writing</option>
+                            <option value="Brand Voice">Brand Voice</option>
+                        </select>
                     </div>
                 </div>
 
