@@ -51,7 +51,7 @@ export function Services() {
                             <h3 className="text-2xl md:text-3xl font-serif text-white mb-8 group-hover:text-[#C1A06E] transition-colors duration-300">
                                 {service.title}
                             </h3>
-                            <p className="text-white/40 text-lg leading-relaxed mb-10 font-light tracking-wide">
+                            <p className="text-white/80 text-lg leading-relaxed mb-10 font-light tracking-wide">
                                 {service.description}
                             </p>
                             <button className="text-[#C1A06E] text-[10px] font-bold tracking-[0.3em] border-b border-[#C1A06E]/30 pb-1 hover:border-[#C1A06E] transition-all duration-300">

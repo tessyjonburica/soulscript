@@ -33,7 +33,7 @@ export function About() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.2 }}
-                            className="space-y-6 text-white/70 text-lg font-light leading-relaxed"
+                            className="space-y-6 text-white/90 text-lg font-light leading-relaxed"
                         >
                             <p>
                                 We&apos;re a global content collective of writers, strategists, and storytellers who believe that brand voice is the most valuable asset in the digital age. We don&apos;t believe in generic templates or AI-generated fluff.

@@ -34,7 +34,7 @@ export function Footer() {
                                 className="h-18 w-auto"
                             />
                         </Link>
-                        <p className="text-white/20 text-[10px] uppercase tracking-[0.3em] leading-relaxed font-bold">
+                        <p className="text-white/60 text-[10px] uppercase tracking-[0.3em] leading-relaxed font-bold">
                             A GLOBAL CONTENT COLLECTIVE CRAFTING NARRATIVES FOR THE NEXT GENERATION OF BRANDS.
                         </p>
                     </div>
@@ -46,7 +46,7 @@ export function Footer() {
                             <ul className="space-y-4">
                                 {footerLinks.explore.map((link) => (
                                     <li key={link.name}>
-                                        <Link href={link.href} className="text-white/20 hover:text-white text-[9px] uppercase tracking-[0.3em] font-bold transition-colors">
+                                        <Link href={link.href} className="text-white/60 hover:text-white text-[9px] uppercase tracking-[0.3em] font-bold transition-colors">
                                             {link.name}
                                         </Link>
                                     </li>
@@ -59,7 +59,7 @@ export function Footer() {
                             <ul className="space-y-4">
                                 {footerLinks.services.map((link) => (
                                     <li key={link.name}>
-                                        <Link href={link.href} className="text-white/20 hover:text-white text-[9px] uppercase tracking-[0.3em] font-bold transition-colors">
+                                        <Link href={link.href} className="text-white/60 hover:text-white text-[9px] uppercase tracking-[0.3em] font-bold transition-colors">
                                             {link.name}
                                         </Link>
                                     </li>
@@ -72,7 +72,7 @@ export function Footer() {
                             <ul className="space-y-4">
                                 {footerLinks.connect.map((link) => (
                                     <li key={link.name}>
-                                        <Link href={link.href} className="text-white/20 hover:text-white text-[9px] uppercase tracking-[0.3em] font-bold transition-colors">
+                                        <Link href={link.href} className="text-white/60 hover:text-white text-[9px] uppercase tracking-[0.3em] font-bold transition-colors">
                                             {link.name}
                                         </Link>
                                     </li>
@@ -84,14 +84,14 @@ export function Footer() {
 
                 {/* Bottom Bar: Copyright & Legal */}
                 <div className="flex flex-col md:flex-row justify-between items-center pt-10 border-t border-white/5 gap-8">
-                    <p className="text-white/20 text-[10px] uppercase tracking-[0.4em] font-bold">
+                    <p className="text-white/60 text-[10px] uppercase tracking-[0.4em] font-bold">
                         © SOUL SCRIPT PRESS 2026
                     </p>
                     <div className="flex gap-12">
-                        <Link href="#" className="text-white/20 hover:text-white text-[9px] uppercase tracking-[0.3em] font-bold transition-colors">
+                        <Link href="#" className="text-white/60 hover:text-white text-[9px] uppercase tracking-[0.3em] font-bold transition-colors">
                             PRIVACY POLICY
                         </Link>
-                        <Link href="#" className="text-white/20 hover:text-white text-[9px] uppercase tracking-[0.3em] font-bold transition-colors">
+                        <Link href="#" className="text-white/60 hover:text-white text-[9px] uppercase tracking-[0.3em] font-bold transition-colors">
                             TERMS
                         </Link>
                     </div>

@@ -123,7 +123,7 @@ export default function PublishingServicesPage() {
                             <h3 className="text-3xl md:text-4xl font-serif mb-6 text-white group-hover:text-[#C1A06E] transition-colors duration-500">
                                 {service.title}
                             </h3>
-                            <p className="text-white/40 text-lg mb-10 leading-relaxed font-light tracking-wide max-w-lg">
+                            <p className="text-white/80 text-lg mb-10 leading-relaxed font-light tracking-wide max-w-lg">
                                 {service.description}
                             </p>
 
@@ -133,7 +133,7 @@ export default function PublishingServicesPage() {
                                 </h4>
                                 <ul className="space-y-4">
                                     {service.bullets.map((bullet) => (
-                                        <li key={bullet} className="flex items-start gap-4 text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase text-white/60 leading-relaxed">
+                                        <li key={bullet} className="flex items-start gap-4 text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase text-white/90 leading-relaxed">
                                             <Plus size={14} className="text-[#C1A06E] mt-1 shrink-0" />
                                             {bullet}
                                         </li>

@@ -18,7 +18,7 @@ export function WhyChooseUs() {
                         <h2 className="text-4xl md:text-5xl font-serif text-white mb-10">
                             Why Choose Us
                         </h2>
-                        <p className="text-white/40 text-lg leading-relaxed font-light tracking-wide max-w-md">
+                        <p className="text-white/80 text-lg leading-relaxed font-light tracking-wide max-w-md">
                             We don&apos;t just write, we deliver results. Our approach is rooted in data but polished with artistic finesse. Every project we take on is treated as a partnership, ensuring your goals become our benchmarks.
                         </p>
                     </motion.div>

@@ -12,10 +12,10 @@ export function TrustedBy() {
         transition={{ duration: 1 }}
         className="container mx-auto px-6"
       >
-        <span className="text-[9px] uppercase tracking-[0.4em] text-white/20 mb-16 block font-medium">TRUSTED BY GROWING BRANDS</span>
+        <span className="text-[9px] uppercase tracking-[0.4em] text-white/60 mb-16 block font-medium">TRUSTED BY GROWING BRANDS</span>
         <div className="flex flex-wrap justify-center items-center gap-x-16 gap-y-10">
           {["VANTAGE", "LUMOS", "AETHERIA", "NOVA", "ELITE"].map((brand) => (
-            <span key={brand} className="text-xl md:text-2xl font-serif tracking-[0.1em] text-white/40 hover:text-white transition-all duration-500 cursor-default">
+            <span key={brand} className="text-xl md:text-2xl font-serif tracking-[0.1em] text-white/60 hover:text-white transition-all duration-500 cursor-default">
               {brand}
             </span>
           ))}

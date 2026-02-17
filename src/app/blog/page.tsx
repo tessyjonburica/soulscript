@@ -88,13 +88,13 @@ export default function BlogPage() {
                         transition={{ duration: 0.8 }}
                         className="text-5xl md:text-7xl lg:text-8xl font-serif mb-6 tracking-tight"
                     >
-                    <span className="italic text-[#C1A06E]">Blog</span>
+                        <span className="italic text-[#C1A06E]">Blog</span>
                     </motion.h1>
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.2 }}
-                        className="text-white/40 text-lg mb-12 font-light max-w-2xl mx-auto"
+                        className="text-white/80 text-lg mb-12 font-light max-w-2xl mx-auto"
                     >
                         Insights on creative writing, conversion copywriting, and the creator-to-brand playbook.
                     </motion.p>
@@ -110,7 +110,7 @@ export default function BlogPage() {
                             <button
                                 key={category}
                                 onClick={() => setActiveCategory(category)}
-                                className={`text-[9px] font-bold tracking-[0.3em] uppercase transition-colors ${activeCategory === category ? "text-[#C1A06E]" : "text-white/40 hover:text-white"
+                                className={`text-[9px] font-bold tracking-[0.3em] uppercase transition-colors ${activeCategory === category ? "text-[#C1A06E]" : "text-white/80 hover:text-white"
                                     }`}
                             >
                                 {category}
@@ -149,69 +149,69 @@ export default function BlogPage() {
                                 <h2 className="text-4xl md:text-5xl font-serif mb-8 leading-tight">
                                     {featuredPost.title}
                                 </h2>
-                                <p className="text-white/40 text-lg leading-relaxed mb-10 font-light">
-                                    {featuredPost.excerpt}
-                                </p>
-                                <button className="text-[#C1A06E] text-[10px] font-bold tracking-[0.3em] border-b border-[#C1A06E]/30 pb-1 hover:border-[#C1A06E] transition-all duration-300 uppercase">
-                                    Read The Article
-                                </button>
-                            </div>
-                        </motion.div>
-                    </div>
-                </section>
-            )}
-
-            {/* Blog Grid */}
-            <section className="py-24 px-6 border-t border-white/10">
-                <div className="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16">
-                    {regularPosts.map((post, idx) => (
-                        <motion.article
-                            key={post.id}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.8, delay: idx * 0.1 }}
-                            className="group cursor-pointer"
-                        >
-                            <div className="relative aspect-[4/3] bg-white/5 overflow-hidden mb-6">
-                                <Image
-                                    src={post.imagePath}
-                                    alt={post.title}
-                                    fill
-                                    className="object-cover grayscale opacity-70 group-hover:opacity-100 transition-opacity duration-500"
-                                />
-                            </div>
-                            <p className="text-[#C1A06E] text-[9px] font-bold tracking-[0.3em] uppercase mb-4">
-                                {post.category} · {post.date}
+                                {featuredPost.excerpt}
                             </p>
-                            <h3 className="text-2xl md:text-3xl font-serif mb-6 leading-tight group-hover:text-[#C1A06E] transition-colors">
-                                {post.title}
-                            </h3>
-                            <button className="text-white/60 text-[9px] font-bold tracking-[0.3em] uppercase hover:text-[#C1A06E] transition-colors flex items-center gap-2">
-                                READ MORE <ArrowRight size={12} />
+                            <button className="text-[#C1A06E] text-[10px] font-bold tracking-[0.3em] border-b border-[#C1A06E]/30 pb-1 hover:border-[#C1A06E] transition-all duration-300 uppercase">
+                                Read The Article
                             </button>
-                        </motion.article>
-                    ))}
-                </div>
-
-                {/* Load More Button */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8 }}
-                    className="text-center mt-20"
-                >
-                    <Button
-                        variant="outline"
-                        className="rounded-none border-[#C1A06E]/30 text-[#C1A06E] hover:bg-[#C1A06E] hover:text-black transition-all px-12 py-7 text-[10px] font-bold tracking-[0.3em] uppercase"
-                    >
-                        Load More Articles
-                    </Button>
+                    </div>
                 </motion.div>
-            </section>
+                    </div>
+                </section >
+            )
+}
 
-            {/* Newsletter Section */}
+{/* Blog Grid */ }
+<section className="py-24 px-6 border-t border-white/10">
+    <div className="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16">
+        {regularPosts.map((post, idx) => (
+            <motion.article
+                key={post.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: idx * 0.1 }}
+                className="group cursor-pointer"
+            >
+                <div className="relative aspect-[4/3] bg-white/5 overflow-hidden mb-6">
+                    <Image
+                        src={post.imagePath}
+                        alt={post.title}
+                        fill
+                        className="object-cover grayscale opacity-70 group-hover:opacity-100 transition-opacity duration-500"
+                    />
+                </div>
+                <p className="text-[#C1A06E] text-[9px] font-bold tracking-[0.3em] uppercase mb-4">
+                    {post.category} · {post.date}
+                </p>
+                <h3 className="text-2xl md:text-3xl font-serif mb-6 leading-tight group-hover:text-[#C1A06E] transition-colors">
+                    {post.title}
+                </h3>
+                <button className="text-white/90 text-[9px] font-bold tracking-[0.3em] uppercase hover:text-[#C1A06E] transition-colors flex items-center gap-2">
+                    READ MORE <ArrowRight size={12} />
+                </button>
+            </motion.article>
+        ))}
+    </div>
+
+    {/* Load More Button */}
+    <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        className="text-center mt-20"
+    >
+        <Button
+            variant="outline"
+            className="rounded-none border-[#C1A06E]/30 text-[#C1A06E] hover:bg-[#C1A06E] hover:text-black transition-all px-12 py-7 text-[10px] font-bold tracking-[0.3em] uppercase"
+        >
+            Load More Articles
+        </Button>
+    </motion.div>
+</section>
+
+{/* Newsletter Section */ }
             <section className="py-32 px-6 border-t border-white/10 bg-[#080808]">
                 <div className="max-w-3xl mx-auto text-center">
                     <motion.h2
@@ -228,7 +228,7 @@ export default function BlogPage() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8, delay: 0.2 }}
-                        className="text-white/40 text-lg mb-12 font-light max-w-xl mx-auto"
+                        className="text-white/80 text-lg mb-12 font-light max-w-xl mx-auto"
                     >
                         Curated insights delivered weekly and the insider edge on what converts. No fluff, no spam.
                     </motion.p>
@@ -254,6 +254,6 @@ export default function BlogPage() {
             </section>
 
             <Footer />
-        </main>
+        </main >
     );
 }
