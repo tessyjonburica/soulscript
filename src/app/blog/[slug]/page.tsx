@@ -1,20 +1,13 @@
-import { createClient } from "@/lib/supabase/client";
-import { Navbar } from "@/components/layout/Navbar";
-import { Footer } from "@/components/layout/Footer";
-import Image from "next/image";
-import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
-import { notFound } from "next/navigation";
-
-// This is a Server Component pattern for fetching data in Next.js 13+ app dir
-// But since we are using client-side supabase for simplicity in this setup (and valid env vars might be missing on build), 
-// we will make this a Client Component for now to avoid build errors if keys are missing.
-// Ideally, this should be server-side.
-
 "use client";
 
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
+import { createClient } from "@/lib/supabase/client";
+import { Navbar } from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/Footer";
 
 export default function BlogPostPage() {
     const params = useParams();
