@@ -15,7 +15,12 @@
     "framer-motion": "^11.11.11",
     "lucide-react": "^0.454.0",
     "clsx": "^2.1.1",
-    "tailwind-merge": "^2.5.4"
+    "tailwind-merge": "^2.5.4",
+    "@supabase/ssr": "^0.5.2",
+    "@supabase/supabase-js": "^2.47.10",
+    "@tiptap/react": "^2.11.2",
+    "@tiptap/starter-kit": "^2.11.2",
+    "@tiptap/extension-image": "^2.11.2"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
