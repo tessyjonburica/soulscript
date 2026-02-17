@@ -12,7 +12,7 @@ export function About() {
                     <div className="relative aspect-[4/3] bg-white/5 w-full overflow-hidden grayscale opacity-80">
                         <Image
                             src="/office_space_soulscript.png"
-                            alt="Soul Script Office Space"
+                            alt="Soul Script Press Office Space"
                             fill
                             className="object-cover"
                         />
@@ -39,7 +39,7 @@ export function About() {
                                 We&apos;re a global content collective of writers, strategists, and storytellers who believe that brand voice is the most valuable asset in the digital age. We don&apos;t believe in generic templates or AI-generated fluff.
                             </p>
                             <p>
-                                Our promise is simple: We deliver content that sounds like you, but better. If you don&apos;t like what you get, you don&apos;t have to pay. That&apos;s the Soul Script guarantee.
+                                Our promise is simple: We deliver content that sounds like you, but better. If you don&apos;t like what you get, you don&apos;t have to pay. That&apos;s the Soul Script Press guarantee.
                             </p>
                         </motion.div>
                     </div>

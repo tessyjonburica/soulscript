@@ -20,7 +20,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "SoulScript",
+  title: "Soul Script Press",
   description: "Scale your content output without losing your brand voice.",
 };
 

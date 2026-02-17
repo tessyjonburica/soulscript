@@ -35,7 +35,7 @@ export function WhyChooseUs() {
                             <Quote className="text-[#C1A06E] w-10 h-10 mb-6 opacity-60" fill="currentColor" />
                             <blockquote className="mb-8">
                                 <p className="text-2xl md:text-3xl font-serif text-white italic leading-snug">
-                                    &quot;Soul Script redefined our brand voice. Our conversion rate increased by 40% within three months of the new copy going live.&quot;
+                                    &quot;Soul Script Press redefined our brand voice. Our conversion rate increased by 40% within three months of the new copy going live.&quot;
                                 </p>
                             </blockquote>
                             <div className="flex items-center gap-3">

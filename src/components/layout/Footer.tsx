@@ -28,7 +28,7 @@ export function Footer() {
                         <Link href="/" className="mb-10 block">
                             <Image
                                 src="/Logo-white.png"
-                                alt="Soul Script"
+                                alt="Soul Script Press"
                                 width={320}
                                 height={72}
                                 className="h-18 w-auto"
@@ -85,7 +85,7 @@ export function Footer() {
                 {/* Bottom Bar: Copyright & Legal */}
                 <div className="flex flex-col md:flex-row justify-between items-center pt-10 border-t border-white/5 gap-8">
                     <p className="text-white/20 text-[10px] uppercase tracking-[0.4em] font-bold">
-                        © SOUL SCRIPT 2026
+                        © SOUL SCRIPT PRESS 2026
                     </p>
                     <div className="flex gap-12">
                         <Link href="#" className="text-white/20 hover:text-white text-[9px] uppercase tracking-[0.3em] font-bold transition-colors">

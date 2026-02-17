@@ -40,7 +40,7 @@ export function Navbar() {
                 <Link href="/" className="flex items-center">
                     <Image
                         src="/Logo-white.png"
-                        alt="Soul Script"
+                        alt="Soul Script Press"
                         width={280}
                         height={64}
                         className="h-16 w-auto"

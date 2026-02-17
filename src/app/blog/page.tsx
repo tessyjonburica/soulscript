@@ -88,7 +88,7 @@ export default function BlogPage() {
                         transition={{ duration: 0.8 }}
                         className="text-5xl md:text-7xl lg:text-8xl font-serif mb-6 tracking-tight"
                     >
-                        Soul Script <span className="italic text-[#C1A06E]">Blog</span>
+                    <span className="italic text-[#C1A06E]">Blog</span>
                     </motion.h1>
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
