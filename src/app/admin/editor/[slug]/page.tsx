@@ -116,14 +116,21 @@ export default function EditorPage() {
         }
     };
 
-
-
-
-
-
-
-
-
+    const addImage = () => {
+        const input = document.createElement('input');
+        input.type = 'file';
+        input.accept = 'image/*';
+        input.onchange = async (e) => {
+            const file = (e.target as HTMLInputElement).files?.[0];
+            if (file) {
+                const url = await handleImageUpload(file);
+                if (url && editor) {
+                    editor.chain().focus().setImage({ src: url }).run();
+                }
+            }
+        };
+        input.click();
+    };
 
     const handleSave = async () => {
         if (!title || !editor) return;
