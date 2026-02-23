@@ -4,6 +4,11 @@ import { useEffect, useState } from "react";
 import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import ImageExtension from "@tiptap/extension-image";
+import LinkExtension from "@tiptap/extension-link";
+import Underline from "@tiptap/extension-underline";
+import Typography from "@tiptap/extension-typography";
+import Placeholder from "@tiptap/extension-placeholder";
+import { List, ListOrdered, Underline as UnderlineIcon, Link as LinkIcon, Quote } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
 import { useRouter, useParams } from "next/navigation";
 import Link from "next/link";
@@ -33,13 +38,32 @@ export default function EditorPage() {
                 heading: {
                     levels: [2, 3],
                 },
+                bulletList: {
+                    keepMarks: true,
+                    keepAttributes: false,
+                },
+                orderedList: {
+                    keepMarks: true,
+                    keepAttributes: false,
+                },
             }),
             ImageExtension,
+            Underline,
+            Typography,
+            LinkExtension.configure({
+                openOnClick: false,
+                HTMLAttributes: {
+                    class: 'text-[#C1A06E] underline cursor-pointer',
+                },
+            }),
+            Placeholder.configure({
+                placeholder: 'Begin your story...',
+            }),
         ],
         content: "",
         editorProps: {
             attributes: {
-                class: "prose prose-invert prose-lg max-w-none focus:outline-none min-h-[500px] pb-32",
+                class: "prose prose-invert prose-lg max-w-none focus:outline-none min-h-[500px] pb-32 prose-p:leading-relaxed prose-li:marker:text-[#C1A06E] prose-ol:list-decimal prose-ul:list-disc",
             },
             handlePaste: (view, event) => {
                 // Future enhancement: custom paste logic if needed
@@ -337,6 +361,12 @@ export default function EditorPage() {
                             icon={<span className="italic px-1">I</span>}
                         />
                         <ToolbarButton
+                            active={editor?.isActive('underline')}
+                            onClick={() => editor?.chain().focus().toggleUnderline().run()}
+                            icon={<UnderlineIcon size={16} />}
+                        />
+                        <div className="w-[1px] h-6 bg-white/10 mx-2 self-center" />
+                        <ToolbarButton
                             active={editor?.isActive('heading', { level: 2 })}
                             onClick={() => editor?.chain().focus().toggleHeading({ level: 2 }).run()}
                             icon={<span className="text-xs font-bold">H2</span>}
@@ -346,17 +376,35 @@ export default function EditorPage() {
                             onClick={() => editor?.chain().focus().toggleHeading({ level: 3 }).run()}
                             icon={<span className="text-xs font-bold">H3</span>}
                         />
+                        <div className="w-[1px] h-6 bg-white/10 mx-2 self-center" />
                         <ToolbarButton
                             active={editor?.isActive('bulletList')}
                             onClick={() => editor?.chain().focus().toggleBulletList().run()}
-                            icon={<span className="text-xs">LIST</span>}
+                            icon={<List size={16} />}
+                        />
+                        <ToolbarButton
+                            active={editor?.isActive('orderedList')}
+                            onClick={() => editor?.chain().focus().toggleOrderedList().run()}
+                            icon={<ListOrdered size={16} />}
                         />
                         <ToolbarButton
                             active={editor?.isActive('blockquote')}
                             onClick={() => editor?.chain().focus().toggleBlockquote().run()}
-                            icon={<span className="text-xs">QUOTE</span>}
+                            icon={<Quote size={16} />}
                         />
                         <div className="w-[1px] h-6 bg-white/10 mx-2 self-center" />
+                        <ToolbarButton
+                            active={editor?.isActive('link')}
+                            onClick={() => {
+                                const url = window.prompt('URL');
+                                if (url) {
+                                    editor?.chain().focus().setLink({ href: url }).run();
+                                } else if (url === '') {
+                                    editor?.chain().focus().unsetLink().run();
+                                }
+                            }}
+                            icon={<LinkIcon size={16} />}
+                        />
                         <ToolbarButton
                             onClick={addImage}
                             icon={<ImageIcon size={16} />}
