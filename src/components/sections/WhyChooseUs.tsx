@@ -19,7 +19,7 @@ export function WhyChooseUs() {
                             Why Choose Us
                         </h2>
                         <p className="text-white/80 text-lg leading-relaxed font-light tracking-wide max-w-md">
-                            We don&apos;t just write, we deliver results. Our approach is rooted in data but polished with artistic finesse. Every project we take on is treated as a partnership, ensuring your goals become our benchmarks.
+                            Our promise is simple: We stand behind our work. If the final delivery does not meet the agreed scope or brief, we will revise it until it does.
                         </p>
                     </motion.div>
 

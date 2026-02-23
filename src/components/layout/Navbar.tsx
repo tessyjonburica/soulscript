@@ -13,7 +13,7 @@ const navLinks = [
     { name: "SERVICES", href: "/services" },
     { name: "PUBLISHING SERVICES", href: "/publishing-services" },
     { name: "BLOG", href: "/blog" },
-    { name: "ABOUT", href: "#about" },
+    // { name: "ABOUT", href: "#about" },
 ];
 
 export function Navbar() {

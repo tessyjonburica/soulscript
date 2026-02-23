@@ -8,7 +8,7 @@ import { createClient } from "@/lib/supabase/client";
 import { useRouter, useParams } from "next/navigation";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Save, Loader2, Image as ImageIcon } from "lucide-react";
+import { ArrowLeft, Save, Loader2, Image as ImageIcon, Edit2, Trash2 } from "lucide-react";
 import Image from "next/image";
 
 export default function EditorPage() {
@@ -29,14 +29,22 @@ export default function EditorPage() {
 
     const editor = useEditor({
         extensions: [
-            StarterKit,
+            StarterKit.configure({
+                heading: {
+                    levels: [2, 3],
+                },
+            }),
             ImageExtension,
         ],
         content: "",
         editorProps: {
             attributes: {
-                class: "prose prose-invert prose-lg max-w-none focus:outline-none min-h-[400px]",
+                class: "prose prose-invert prose-lg max-w-none focus:outline-none min-h-[500px] pb-32",
             },
+            handlePaste: (view, event) => {
+                // Future enhancement: custom paste logic if needed
+                return false;
+            }
         },
     });
 
@@ -103,8 +111,6 @@ export default function EditorPage() {
         }
     };
 
-
-
     const handleCoverImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
         if (!e.target.files || e.target.files.length === 0) {
             return;
@@ -132,19 +138,25 @@ export default function EditorPage() {
         input.click();
     };
 
-    const handleSave = async () => {
+    const handleSave = async (shouldPublish?: boolean) => {
         if (!title || !editor) return;
         setSaving(true);
 
         const content = editor.getHTML();
+        const finalPublished = typeof shouldPublish === 'boolean' ? shouldPublish : published;
+
+        const generatedSlug = slug || title.toLowerCase()
+            .replace(/ /g, "-")
+            .replace(/[^\w-]+/g, "");
+
         const postData = {
             title,
-            slug: slug || title.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
+            slug: generatedSlug,
             excerpt,
             content,
             cover_image: coverImage,
             category,
-            published,
+            published: finalPublished,
             updated_at: new Date().toISOString(),
         };
 
@@ -162,94 +174,133 @@ export default function EditorPage() {
 
         setSaving(false);
         if (!error) {
-            router.push("/admin/dashboard");
+            setPublished(finalPublished);
+            if (isNew || generatedSlug !== params.slug) {
+                router.push(`/admin/editor/${generatedSlug}`);
+            } else {
+                alert(shouldPublish ? "Post published successfully!" : "Changes saved successfully!");
+            }
         } else {
             alert("Error saving post: " + error.message);
         }
     };
 
-    if (loading) return <div className="bg-[#050505] min-h-screen" />;
+    if (loading) return (
+        <div className="bg-[#050505] min-h-screen flex items-center justify-center">
+            <Loader2 className="animate-spin text-[#C1A06E]" size={32} />
+        </div>
+    );
 
     return (
         <div className="min-h-screen bg-[#050505] text-white">
-            {/* Toolbar */}
-            <div className="sticky top-0 z-20 bg-[#050505]/95 backdrop-blur border-b border-white/5 px-6 py-4 flex justify-between items-center">
-                <Link href="/admin/dashboard" className="text-white/40 hover:text-white transition-colors flex items-center gap-2 text-xs tracking-widest uppercase">
-                    <ArrowLeft size={14} /> Back
-                </Link>
-                <div className="flex items-center gap-4">
-                    <div className="flex items-center gap-2 mr-6">
-                        <span className="text-[10px] uppercase tracking-widest text-white/40">Status:</span>
-                        <button
-                            onClick={() => setPublished(!published)}
-                            className={`text-[10px] uppercase tracking-widest font-bold px-3 py-1 border transition-all ${published ? "text-green-400 border-green-400/30 bg-green-400/10" : "text-yellow-400 border-yellow-400/30 bg-yellow-400/10"}`}
-                        >
-                            {published ? "PUBLISHED" : "DRAFT"}
-                        </button>
+            {/* Header / Toolbar */}
+            <div className="sticky top-0 z-30 bg-[#050505]/95 backdrop-blur-md border-b border-white/5 py-4 px-6 md:px-12">
+                <div className="max-w-7xl mx-auto flex justify-between items-center">
+                    <div className="flex items-center gap-6">
+                        <Link href="/admin/dashboard" className="text-white/40 hover:text-white transition-colors flex items-center gap-2 text-[10px] font-bold tracking-[0.2em] uppercase">
+                            <ArrowLeft size={14} /> Back
+                        </Link>
+                        <div className="flex items-center gap-3 border-l border-white/10 pl-6 h-6">
+                            <span className={`w-2 h-2 rounded-full ${published ? 'bg-green-500' : 'bg-yellow-500'}`}></span>
+                            <span className="text-[9px] font-bold tracking-[0.2em] text-white/40 uppercase">
+                                {published ? 'LIVE ON SITE' : 'DRAFT MODE'}
+                            </span>
+                        </div>
                     </div>
-                    <Button
-                        onClick={handleSave}
-                        disabled={saving || uploading}
-                        className="bg-[#C1A06E] text-black hover:bg-white text-xs font-bold tracking-[0.2em] px-6 rounded-none min-w-[120px]"
-                    >
-                        {saving ? <Loader2 className="animate-spin" size={16} /> : "SAVE CHANGES"}
-                    </Button>
+
+                    <div className="flex items-center gap-4">
+                        {!published ? (
+                            <>
+                                <button
+                                    onClick={() => handleSave(false)}
+                                    disabled={saving || uploading}
+                                    className="text-[10px] font-bold tracking-[0.2em] text-white/60 hover:text-white transition-colors p-3 uppercase border border-white/5 bg-white/5"
+                                >
+                                    SAVE DRAFT
+                                </button>
+                                <Button
+                                    onClick={() => handleSave(true)}
+                                    disabled={saving || uploading}
+                                    className="bg-[#C1A06E] text-black hover:bg-white text-[10px] font-bold tracking-[0.2em] px-8 py-6 rounded-none min-w-[140px] uppercase h-auto"
+                                >
+                                    {saving ? <Loader2 className="animate-spin" size={16} /> : "PUBLISH NOW"}
+                                </Button>
+                            </>
+                        ) : (
+                            <>
+                                <Link href={`/blog/${slug}`} target="_blank" className="text-[10px] font-bold tracking-[0.2em] text-white/40 hover:text-[#C1A06E] transition-colors p-3 uppercase mr-2">
+                                    VIEW LIVE POST
+                                </Link>
+                                <Button
+                                    onClick={() => handleSave()}
+                                    disabled={saving || uploading}
+                                    className="bg-transparent border border-[#C1A06E]/30 text-[#C1A06E] hover:bg-[#C1A06E] hover:text-black text-[10px] font-bold tracking-[0.2em] px-8 py-6 rounded-none min-w-[140px] uppercase h-auto"
+                                >
+                                    {saving ? <Loader2 className="animate-spin" size={16} /> : "UPDATE POST"}
+                                </Button>
+                            </>
+                        )}
+                    </div>
                 </div>
             </div>
 
-            <div className="max-w-4xl mx-auto px-6 py-12 space-y-12">
-                {/* Meta Fields */}
-                <div className="space-y-6">
-                    <input
-                        type="text"
-                        placeholder="Post Title..."
-                        value={title}
-                        onChange={(e) => setTitle(e.target.value)}
-                        className="w-full bg-transparent text-4xl md:text-5xl font-serif text-white placeholder-white/20 border-none focus:ring-0 px-0"
-                    />
-                    <input
-                        type="text"
-                        placeholder="Excerpt (for previews)..."
-                        value={excerpt}
-                        onChange={(e) => setExcerpt(e.target.value)}
-                        className="w-full bg-transparent text-lg font-light text-white/80 placeholder-white/20 border-none focus:ring-0 px-0"
-                    />
-                    <div className="flex gap-4 items-start">
-                        <div className="flex-1 space-y-2">
-                            <label className="text-[10px] uppercase tracking-widest text-white/40 block">Cover Image</label>
-                            <div className="flex gap-2">
-                                <input
-                                    type="text"
-                                    placeholder="Image URL..."
-                                    value={coverImage}
-                                    onChange={(e) => setCoverImage(e.target.value)}
-                                    className="flex-1 bg-white/5 border border-white/10 text-sm text-white px-4 py-2 focus:border-[#C1A06E] focus:outline-none placeholder-white/20"
-                                />
-                                <label className="cursor-pointer bg-white/10 hover:bg-white/20 text-white px-3 py-2 flex items-center justify-center transition-colors">
+            <div className="max-w-4xl mx-auto px-6 py-16">
+                {/* Meta & Cover Section */}
+                <div className="mb-16 space-y-12">
+                    {/* Cover Image Preview/Upload */}
+                    <div className="relative group">
+                        <div className={`relative aspect-[21/9] w-full overflow-hidden bg-white/[0.02] border border-dashed border-white/10 transition-all ${!coverImage ? 'hover:border-[#C1A06E]/30' : ''}`}>
+                            {coverImage ? (
+                                <>
+                                    <Image src={coverImage} alt="Cover Preview" fill className="object-cover" />
+                                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4">
+                                        <label className="cursor-pointer bg-black/60 border border-white/20 p-3 hover:bg-[#C1A06E] hover:text-black transition-all">
+                                            <input type="file" className="hidden" accept="image/*" onChange={handleCoverImageUpload} />
+                                            <Edit2 size={16} />
+                                        </label>
+                                        <button
+                                            onClick={() => setCoverImage("")}
+                                            className="bg-black/60 border border-white/20 p-3 hover:bg-red-500/80 transition-all"
+                                        >
+                                            <Trash2 size={16} />
+                                        </button>
+                                    </div>
+                                </>
+                            ) : (
+                                <label className="absolute inset-0 flex flex-col items-center justify-center cursor-pointer">
                                     <input type="file" className="hidden" accept="image/*" onChange={handleCoverImageUpload} />
-                                    <ImageIcon size={18} />
+                                    <ImageIcon size={32} className="text-white/10 mb-4" />
+                                    <span className="text-[10px] font-bold tracking-[0.3em] text-white/20 uppercase">
+                                        {uploading ? 'UPLOADING...' : 'UPLOAD COVER IMAGE'}
+                                    </span>
                                 </label>
-                            </div>
-                            {uploading && <p className="text-[10px] text-[#C1A06E] animate-pulse">Uploading...</p>}
+                            )}
                         </div>
+                    </div>
 
-                        <div className="flex-1 space-y-2">
-                            <label className="text-[10px] uppercase tracking-widest text-white/40 block">Slug (Optional)</label>
-                            <input
-                                type="text"
-                                placeholder="custom-slug"
-                                value={slug}
-                                onChange={(e) => setSlug(e.target.value)}
-                                className="w-full bg-white/5 border border-white/10 text-sm text-white px-4 py-2 focus:border-[#C1A06E] focus:outline-none placeholder-white/20"
-                            />
-                        </div>
+                    <div className="space-y-4">
+                        <input
+                            type="text"
+                            placeholder="ARTICLE TITLE..."
+                            value={title}
+                            onChange={(e) => setTitle(e.target.value)}
+                            className="w-full bg-transparent text-5xl md:text-7xl font-serif text-white placeholder-white/5 border-none focus:ring-0 p-0 leading-tight"
+                        />
+                        <textarea
+                            placeholder="Write a compelling excerpt for the blog preview..."
+                            value={excerpt}
+                            onChange={(e) => setExcerpt(e.target.value)}
+                            className="w-full bg-transparent text-xl font-light text-white/40 placeholder-white/5 border-none focus:ring-0 p-0 leading-relaxed resize-none h-24"
+                        />
+                    </div>
 
-                        <div className="flex-1 space-y-2">
-                            <label className="text-[10px] uppercase tracking-widest text-white/40 block">Category</label>
+                    <div className="grid md:grid-cols-2 gap-12 pt-12 border-t border-white/5">
+                        <div className="space-y-3">
+                            <label className="text-[9px] font-bold tracking-[0.3em] text-[#C1A06E] uppercase">Category</label>
                             <select
                                 value={category}
                                 onChange={(e) => setCategory(e.target.value)}
-                                className="w-full bg-white/5 border border-white/10 text-sm text-white px-4 py-2 focus:border-[#C1A06E] focus:outline-none placeholder-white/20 uppercase tracking-widest"
+                                className="w-full bg-white/[0.03] border border-white/5 text-white text-xs font-bold tracking-widest px-6 py-4 focus:border-[#C1A06E] focus:outline-none appearance-none cursor-pointer uppercase"
                             >
                                 <option value="General">General</option>
                                 <option value="Content Strategy">Content Strategy</option>
@@ -258,53 +309,81 @@ export default function EditorPage() {
                                 <option value="Brand Voice">Brand Voice</option>
                             </select>
                         </div>
+                        <div className="space-y-3">
+                            <label className="text-[9px] font-bold tracking-[0.3em] text-[#C1A06E] uppercase">Custom Slug (Optional)</label>
+                            <input
+                                type="text"
+                                placeholder="the-art-of-legacy"
+                                value={slug}
+                                onChange={(e) => setSlug(e.target.value)}
+                                className="w-full bg-white/[0.03] border border-white/5 text-white text-xs font-light px-6 py-4 focus:border-[#C1A06E] focus:outline-none placeholder-white/10"
+                            />
+                        </div>
                     </div>
                 </div>
 
-                {/* Editor Toolbar */}
-                <div className="flex gap-2 border-y border-white/10 py-3 overflow-x-auto">
-                    <button
-                        onClick={() => editor?.chain().focus().toggleBold().run()}
-                        className={`p-2 hover:bg-white/10 rounded transition-colors ${editor?.isActive('bold') ? 'text-[#C1A06E]' : 'text-white/60'}`}
-                    >
-                        <strong>B</strong>
-                    </button>
-                    <button
-                        onClick={() => editor?.chain().focus().toggleItalic().run()}
-                        className={`p-2 hover:bg-white/10 rounded transition-colors ${editor?.isActive('italic') ? 'text-[#C1A06E]' : 'text-white/60'}`}
-                    >
-                        <em>I</em>
-                    </button>
-                    <button
-                        onClick={() => editor?.chain().focus().toggleHeading({ level: 2 }).run()}
-                        className={`p-2 hover:bg-white/10 rounded transition-colors ${editor?.isActive('heading', { level: 2 }) ? 'text-[#C1A06E]' : 'text-white/60'}`}
-                    >
-                        H2
-                    </button>
-                    <button
-                        onClick={() => editor?.chain().focus().toggleHeading({ level: 3 }).run()}
-                        className={`p-2 hover:bg-white/10 rounded transition-colors ${editor?.isActive('heading', { level: 3 }) ? 'text-[#C1A06E]' : 'text-white/60'}`}
-                    >
-                        H3
-                    </button>
-                    <button
-                        onClick={() => editor?.chain().focus().toggleBulletList().run()}
-                        className={`p-2 hover:bg-white/10 rounded transition-colors ${editor?.isActive('bulletList') ? 'text-[#C1A06E]' : 'text-white/60'}`}
-                    >
-                        Lists
-                    </button>
-                    <button
-                        onClick={addImage}
-                        className="p-2 hover:bg-white/10 rounded transition-colors text-white/60"
-                        title="Upload Image"
-                    >
-                        <ImageIcon size={18} />
-                    </button>
-                </div>
+                {/* Editor Surface */}
+                <div className="space-y-8">
+                    {/* Floating/Sticky Editor Toolbar */}
+                    <div className="sticky top-24 z-20 flex flex-wrap gap-1 bg-[#1a1a1a]/80 backdrop-blur border border-white/10 p-2 max-w-fit mx-auto shadow-2xl">
+                        <ToolbarButton
+                            active={editor?.isActive('bold')}
+                            onClick={() => editor?.chain().focus().toggleBold().run()}
+                            icon={<span className="font-bold">B</span>}
+                        />
+                        <ToolbarButton
+                            active={editor?.isActive('italic')}
+                            onClick={() => editor?.chain().focus().toggleItalic().run()}
+                            icon={<span className="italic px-1">I</span>}
+                        />
+                        <ToolbarButton
+                            active={editor?.isActive('heading', { level: 2 })}
+                            onClick={() => editor?.chain().focus().toggleHeading({ level: 2 }).run()}
+                            icon={<span className="text-xs font-bold">H2</span>}
+                        />
+                        <ToolbarButton
+                            active={editor?.isActive('heading', { level: 3 })}
+                            onClick={() => editor?.chain().focus().toggleHeading({ level: 3 }).run()}
+                            icon={<span className="text-xs font-bold">H3</span>}
+                        />
+                        <ToolbarButton
+                            active={editor?.isActive('bulletList')}
+                            onClick={() => editor?.chain().focus().toggleBulletList().run()}
+                            icon={<span className="text-xs">LIST</span>}
+                        />
+                        <ToolbarButton
+                            active={editor?.isActive('blockquote')}
+                            onClick={() => editor?.chain().focus().toggleBlockquote().run()}
+                            icon={<span className="text-xs">QUOTE</span>}
+                        />
+                        <div className="w-[1px] h-6 bg-white/10 mx-2 self-center" />
+                        <ToolbarButton
+                            onClick={addImage}
+                            icon={<ImageIcon size={16} />}
+                        />
+                    </div>
 
-                {/* Editor Content */}
-                <EditorContent editor={editor} className="min-h-[500px]" />
+                    <div className="relative">
+                        {!editor?.getText() && (
+                            <div className="absolute top-0 left-0 text-white/5 text-xl font-light pointer-events-none select-none">
+                                Start telling your story...
+                            </div>
+                        )}
+                        <EditorContent editor={editor} />
+                    </div>
+                </div>
             </div>
         </div>
+    );
+}
+
+function ToolbarButton({ active, onClick, icon }: { active?: boolean, onClick: () => void, icon: React.ReactNode }) {
+    return (
+        <button
+            onClick={onClick}
+            className={`min-w-[40px] h-10 flex items-center justify-center p-2 transition-all hover:bg-white/5 ${active ? 'text-[#C1A06E] bg-white/5' : 'text-white/40'}`}
+        >
+            {icon}
+        </button>
     );
 }
